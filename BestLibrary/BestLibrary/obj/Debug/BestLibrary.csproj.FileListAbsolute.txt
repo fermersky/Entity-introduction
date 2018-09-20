@@ -1,0 +1,11 @@
+C:\Users\Данил\Desktop\BestLibrary\BestLibrary\bin\Debug\BestLibrary.exe.config
+C:\Users\Данил\Desktop\BestLibrary\BestLibrary\bin\Debug\BestLibrary.exe
+C:\Users\Данил\Desktop\BestLibrary\BestLibrary\bin\Debug\BestLibrary.pdb
+C:\Users\Данил\Desktop\BestLibrary\BestLibrary\bin\Debug\EntityFramework.dll
+C:\Users\Данил\Desktop\BestLibrary\BestLibrary\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Данил\Desktop\BestLibrary\BestLibrary\bin\Debug\EntityFramework.xml
+C:\Users\Данил\Desktop\BestLibrary\BestLibrary\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Данил\Desktop\BestLibrary\BestLibrary\obj\Debug\BestLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Данил\Desktop\BestLibrary\BestLibrary\obj\Debug\BestLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Данил\Desktop\BestLibrary\BestLibrary\obj\Debug\BestLibrary.exe
+C:\Users\Данил\Desktop\BestLibrary\BestLibrary\obj\Debug\BestLibrary.pdb

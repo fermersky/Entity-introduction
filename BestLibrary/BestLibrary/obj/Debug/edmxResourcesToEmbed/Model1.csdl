@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BestLibraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Authors">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BooksInLibrary" Relationship="Self.FK__BooksInLi__Id_au__1BFD2C07" FromRole="Authors" ToRole="BooksInLibrary" />
+  </EntityType>
+  <EntityType Name="Books">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BooksInLibrary" Relationship="Self.FK__BooksInLi__Id_bo__1B0907CE" FromRole="Books" ToRole="BooksInLibrary" />
+  </EntityType>
+  <EntityType Name="BooksInLibrary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_book" Type="Int32" />
+    <Property Name="Id_author" Type="Int32" />
+    <Property Name="Id_customer" Type="Int32" />
+    <NavigationProperty Name="Authors" Relationship="Self.FK__BooksInLi__Id_au__1BFD2C07" FromRole="BooksInLibrary" ToRole="Authors" />
+    <NavigationProperty Name="Books" Relationship="Self.FK__BooksInLi__Id_bo__1B0907CE" FromRole="BooksInLibrary" ToRole="Books" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK__BooksInLi__Id_cu__1CF15040" FromRole="BooksInLibrary" ToRole="Customers" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IsDebtor" Type="Boolean" />
+    <NavigationProperty Name="BooksInLibrary" Relationship="Self.FK__BooksInLi__Id_cu__1CF15040" FromRole="Customers" ToRole="BooksInLibrary" />
+  </EntityType>
+  <Association Name="FK__BooksInLi__Id_au__1BFD2C07">
+    <End Role="Authors" Type="Self.Authors" Multiplicity="0..1" />
+    <End Role="BooksInLibrary" Type="Self.BooksInLibrary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BooksInLibrary">
+        <PropertyRef Name="Id_author" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BooksInLi__Id_bo__1B0907CE">
+    <End Role="Books" Type="Self.Books" Multiplicity="0..1" />
+    <End Role="BooksInLibrary" Type="Self.BooksInLibrary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Books">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BooksInLibrary">
+        <PropertyRef Name="Id_book" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BooksInLi__Id_cu__1CF15040">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+    <End Role="BooksInLibrary" Type="Self.BooksInLibrary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BooksInLibrary">
+        <PropertyRef Name="Id_customer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BestLibraryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Authors" EntityType="Self.Authors" />
+    <EntitySet Name="Books" EntityType="Self.Books" />
+    <EntitySet Name="BooksInLibrary" EntityType="Self.BooksInLibrary" />
+    <EntitySet Name="Customers" EntityType="Self.Customers" />
+    <AssociationSet Name="FK__BooksInLi__Id_au__1BFD2C07" Association="Self.FK__BooksInLi__Id_au__1BFD2C07">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="BooksInLibrary" EntitySet="BooksInLibrary" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BooksInLi__Id_bo__1B0907CE" Association="Self.FK__BooksInLi__Id_bo__1B0907CE">
+      <End Role="Books" EntitySet="Books" />
+      <End Role="BooksInLibrary" EntitySet="BooksInLibrary" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BooksInLi__Id_cu__1CF15040" Association="Self.FK__BooksInLi__Id_cu__1CF15040">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="BooksInLibrary" EntitySet="BooksInLibrary" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
